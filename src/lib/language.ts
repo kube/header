@@ -15,5 +15,11 @@ import { LANGUAGES } from '../data'
  * If file is not a supported language, `undefined` will
  * be returned.
  */
-export const getLanguageFromFilename = (path: string) =>
-  LANGUAGES.find(_ => _.test.test(path))
+export const getLanguageFromFilename = (path: string) => {
+  for (const language of LANGUAGES) {
+    if (language.test.test(path)) {
+      return language
+    }
+  }
+  return undefined
+}
