@@ -1,6 +1,6 @@
 {
   "name": "kube-header",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bin": {
     "header": "dist/cli.js"
   },
@@ -31,10 +31,12 @@
       }
     },
     "transform": {
-      ".ts":
-        "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": ".*\\.spec\\.ts$",
-    "moduleFileExtensions": ["ts", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
   }
 }
