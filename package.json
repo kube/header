@@ -9,7 +9,9 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "webpack --config config/webpack.config.ts"
+    "build": "webpack --config config/webpack.config.ts",
+    "prepublish":
+      "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
