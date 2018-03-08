@@ -10,8 +10,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --config config/webpack.config.ts",
-    "prepublishOnly":
-      "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
+    "prepublishOnly": "sh scripts/shebang.sh"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
