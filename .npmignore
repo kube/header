@@ -1,9 +1,9 @@
 .circleci
-config
-src
+/config
+/src
 .prettierrc
 .editorconfig
 yarn.lock
-dist/src/cli
-dist/src/data
-dist/src/lib/tests
+/dist/src/cli
+/dist/src/data
+/dist/src/lib/tests
