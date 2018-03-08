@@ -5,7 +5,7 @@
     "header": "dist/cli.js"
   },
   "main": "dist/lib.js",
-  "types": "dist/lib/index.d.ts",
+  "types": "dist/src/lib/index.d.ts",
   "license": "MIT",
   "scripts": {
     "test": "jest",
@@ -31,12 +31,10 @@
       }
     },
     "transform": {
-      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts":
+        "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": ".*\\.spec\\.ts$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "js"]
   }
 }
