@@ -10,7 +10,8 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --config config/webpack.config.ts",
-    "prepublish": "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
+    "prepublishOnly":
+      "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
@@ -32,12 +33,10 @@
       }
     },
     "transform": {
-      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts":
+        "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": ".*\\.spec\\.ts$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "js"]
   }
 }
