@@ -1,9 +1,9 @@
 [![CircleCI](https://circleci.com/gh/kube/header.svg?style=svg)](https://circleci.com/gh/kube/header)
 
-# kube Header
+# header
 
-This library exposes functions and a cli to check and re-format the kube header in source files.
+Library & CLI to check and format kube header in source files.
 
 ```sh
-./kubeheader format hello.ts --write
+header format --write hello.ts
 ```
