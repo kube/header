@@ -1,6 +1,6 @@
 {
   "name": "kube-header",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "bin": {
     "header": "dist/cli.js"
   },
@@ -10,8 +10,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --config config/webpack.config.ts",
-    "prepublish":
-      "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
+    "prepublish": "echo '#!/usr/bin/env node' | cat - dist/cli.js > $$ && mv $$ dist/cli.js"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
