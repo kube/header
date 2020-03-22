@@ -33,11 +33,12 @@ jobs:
 
       - name: Cache node modules
         uses: actions/cache@v1
+        id: yarn-cache
         with:
           path: node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            node_modules-
+            ${{ runner.os }}-yarn-
 
       - run: yarn install
 
