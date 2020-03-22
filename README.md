@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/kube/header.svg?style=svg)](https://circleci.com/gh/kube/header)
+![](https://github.com/kube/header/workflows/Build/badge.svg)
 
 # header
 
