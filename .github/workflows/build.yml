@@ -13,8 +13,8 @@ name: Build
 on: [push]
 
 jobs:
-  setup:
-    name: Setup
+  install:
+    name: Install
     runs-on: ubuntu-latest
 
     strategy:
