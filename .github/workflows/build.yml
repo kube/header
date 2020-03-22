@@ -86,5 +86,6 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo $NODE_AUTH_TOKEN
-        run: npm publish --access public
+        run: |
+          | echo $NODE_AUTH_TOKEN
+          | npm publish --access public
