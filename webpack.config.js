@@ -8,12 +8,14 @@
      ## ## ## :##
       ## ## ##*/
 
-import { join } from 'path'
-import { Configuration } from 'webpack'
+const { join } = require('path')
 
 const PROJECT_ROOT = join(__dirname, '..')
 
-const config: Configuration = {
+/**
+ * @type {import('webpack').Configuration}
+ */
+module.exports = {
   mode: 'production',
   target: 'node',
   entry: {
@@ -35,5 +37,3 @@ const config: Configuration = {
     path: join(PROJECT_ROOT, 'dist')
   }
 }
-
-export default config
