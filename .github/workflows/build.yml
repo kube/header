@@ -15,6 +15,7 @@ on: [push]
 jobs:
   setup:
     name: Setup
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
