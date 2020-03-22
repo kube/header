@@ -10,10 +10,10 @@
 
 const { join } = require('path')
 
-const PROJECT_ROOT = join(__dirname, '..')
+const PROJECT_ROOT = __dirname
 
 /**
- * @type {import('webpack').Configuration}
+ * e@type {import('webpack').Configuration}
  */
 module.exports = {
   mode: 'production',
