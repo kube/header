@@ -90,8 +90,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - run: yarn build
-        env:
-          CI: true
 
       - name: Persist dist
         uses: actions/upload-artifact@v1
