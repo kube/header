@@ -12,10 +12,14 @@ import { formatHeader } from '../header'
 import { getLanguageFromFilename } from '../language'
 import { paddedText } from '../utils'
 
-const testFormat = (input: string) =>
+const testFormat = (
+  input: string,
+  addIfNotPresent?: boolean
+) =>
   formatHeader(
     input,
-    getLanguageFromFilename('folder/file.ts')!.type
+    getLanguageFromFilename('folder/file.ts')!.type,
+    addIfNotPresent
   )
 
 it('formats header', () =>
@@ -154,4 +158,45 @@ it('handles shebang', () =>
       |const a = 42
       |console.log('HELLO')
     `
+  ))
+
+it('does not add header if none present by default', () =>
+  expect(
+    testFormat(
+      paddedText`
+    |const a = 42
+    |console.log('HELLO')
+    `
+    )
+  ).toBe(
+    paddedText`
+    |const a = 42
+    |console.log('HELLO')
+  `
+  ))
+
+it('adds header if none present and `addIfNotPresent` is true', () =>
+  expect(
+    testFormat(
+      paddedText`
+    |const a = 42
+    |console.log('HELLO')
+    `,
+      true
+    )
+  ).toBe(
+    paddedText`
+    |
+    |      /*#######.
+    |     ########",#:
+    |   #########',##".
+    |  ##'##'## .##',##.
+    |   ## ## ## # ##",#.
+    |    ## ## ## ## ##'
+    |     ## ## ## :##
+    |      ## ## ##*/
+    |
+    |const a = 42
+    |console.log('HELLO')
+  `
   ))
