@@ -128,12 +128,6 @@ jobs:
         with:
           ref: master
 
-      - name: Load dist
-        uses: actions/download-artifact@v1
-        with:
-          name: ${{ matrix.package }}-${{ matrix.node-version }}-dist
-          path: workspaces/${{ matrix.package }}/dist
-
       - name: Get version in current branch
         id: branch-version
         run: echo "##[set-output name=value;]$(jq -r .version package.json)"
@@ -145,6 +139,12 @@ jobs:
       - name: Version update detected
         if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
         run: 'echo "Version update found: New version: ${{ steps.branch-version.outputs.value }}"'
+
+      - name: Load dist
+        uses: actions/download-artifact@v1
+        with:
+          name: ${{ matrix.package }}-${{ matrix.node-version }}-dist
+          path: packages/${{ matrix.package }}/dist
 
       - name: Publish package to NPM
         if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
