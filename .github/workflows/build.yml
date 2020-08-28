@@ -129,7 +129,7 @@ jobs:
         run: 'echo "Version update found: New version: ${{ steps.branch-version.outputs.value }}"'
 
       - name: Publish package to NPM
-        if: steps.check.outputs.changed == 'true'
+        if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
