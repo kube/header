@@ -2,8 +2,4 @@
 
 # header
 
-Library & CLI to check and format kube header in source files.
-
-```sh
-header format --write hello.ts
-```
+Monorepo containing tools for kube Header formatting in source files.
