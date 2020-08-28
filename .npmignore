@@ -1,8 +1,13 @@
 .circleci
+.github
 /config
 /src
+/scripts
 .prettierrc
 .editorconfig
+tsconfig.json
+jest.config.js
+webpack.config.js
 yarn.lock
 /dist/src/cli
 /dist/src/data
