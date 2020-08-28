@@ -12,7 +12,7 @@ import { readFile, writeFile } from './fs'
 import * as program from 'commander'
 import {
   formatHeader,
-  getLanguageFromFilename
+  getLanguageFromFilename,
 } from '../lib'
 
 const { version } = require('../../package.json')
@@ -21,6 +21,7 @@ program
   .version(version, '-v, --version')
   .command('format <files...>')
   .option('-w, --write', 'Write file in place')
+  .option('-a, --add', 'Add header if not present')
   .action(async (files, options) => {
     for (const file of files) {
       const content = await readFile(file, 'utf-8')
@@ -29,7 +30,8 @@ program
       if (detectedLanguage) {
         const formattedContent = formatHeader(
           content,
-          detectedLanguage.type
+          detectedLanguage.type,
+          options.add
         )
         if (options.write === true) {
           await writeFile(file, formattedContent)

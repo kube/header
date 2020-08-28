@@ -44,12 +44,21 @@ export const extractHeader = (code: string) => {
  */
 export const formatHeader = (
   rawCode: string,
-  language: SupportedLanguage
+  language: SupportedLanguage,
+  addIfNotPresent?: boolean
 ) => {
   const [shebang, code] = extractShebang(rawCode)
 
-  return (
-    shebang +
-    code.replace(HEADER_REGEX, getHeader(language))
-  )
+  const currentHeader = extractHeader(code)
+
+  if (currentHeader) {
+    return (
+      shebang +
+      code.replace(HEADER_REGEX, getHeader(language))
+    )
+  } else if (addIfNotPresent) {
+    return shebang + getHeader(language) + code
+  } else {
+    return rawCode
+  }
 }
