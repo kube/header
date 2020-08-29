@@ -5,11 +5,12 @@
     "header": "dist/cli.js"
   },
   "main": "dist/lib.js",
-  "types": "dist/src/lib/index.d.ts",
+  "types": "dist/lib/index.d.ts",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "prepublishOnly": "sh scripts/shebang.sh"
   },
   "devDependencies": {

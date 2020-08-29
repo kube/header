@@ -8,52 +8,60 @@
      ## ## ## :##
       ## ## ##*/
 
-import * as vscode from 'vscode'
-import {
-  Position,
-  Range,
-  TextEdit,
-  WorkspaceEdit,
-} from 'vscode'
 import {
   extractHeader,
   getHeader,
   isSupportedLanguage,
   SupportedLanguage,
-} from './header'
+} from 'kube-header'
+import * as vscode from 'vscode'
+import {
+  ExtensionContext,
+  Position,
+  Range,
+  TextDocument,
+  TextEdit,
+  WorkspaceEdit,
+} from 'vscode'
 
 /**
  * Returns the number of lines of a header.
  * Header height can vary if code formatter removed first line
  */
-const getHeaderHeight = (header: string) =>
-  header.split('\n').length - 1
+function getHeaderHeight(header: string) {
+  return header.split('\n').length - 1
+}
 
 /**
  * Insert a new header at top of document
  */
-const insertHeader = (language: SupportedLanguage) =>
-  TextEdit.insert(new Position(0, 0), getHeader(language))
+function insertHeader(language: SupportedLanguage) {
+  return TextEdit.insert(
+    new Position(0, 0),
+    getHeader(language)
+  )
+}
 
 /**
  * Update header in document in case broken by code formatter
  */
-const replaceHeader = (
+function replaceHeader(
   currentHeader: string,
   language: SupportedLanguage
-) =>
-  TextEdit.replace(
+) {
+  return TextEdit.replace(
     new Range(0, 0, getHeaderHeight(currentHeader), 0),
     getHeader(language)
   )
+}
 
 /**
  * Helper to apply TextEdits to Document
  */
-const applyTextEdits = (
-  document: vscode.TextDocument,
+function applyTextEdits(
+  document: TextDocument,
   textEdits: TextEdit[]
-) => {
+) {
   const workspaceEdit = new WorkspaceEdit()
   workspaceEdit.set(document.uri, textEdits)
   vscode.workspace.applyEdit(workspaceEdit)
@@ -62,9 +70,7 @@ const applyTextEdits = (
 /**
  * Returns TextEdits to perform to insert an header
  */
-const insertDocumentHeader = (
-  document: vscode.TextDocument
-) => {
+function insertDocumentHeader(document: TextDocument) {
   const currentHeader = extractHeader(document.getText())
 
   return !currentHeader &&
@@ -76,38 +82,33 @@ const insertDocumentHeader = (
 /**
  * Returns TextEdits to perform to fix a potential header
  */
-const updateDocumentHeader = (
-  document: vscode.TextDocument
-) => {
+function updateDocumentHeader(document: TextDocument) {
   if (!isSupportedLanguage(document.languageId)) {
     return []
+  } else {
+    const currentHeader = extractHeader(document.getText())
+
+    return currentHeader
+      ? [replaceHeader(currentHeader, document.languageId)]
+      : []
   }
-
-  const currentHeader = extractHeader(document.getText())
-
-  return currentHeader
-    ? [replaceHeader(currentHeader, document.languageId)]
-    : []
 }
 
 /**
  * Called by VSCode on extension activation.
  * Registers header insertion command and formatting provider.
  */
-export const activate = (
-  context: vscode.ExtensionContext
-) => {
+export function activate(context: ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerTextEditorCommand(
       'kube.insertHeader',
-      (editor) =>
+      editor =>
         applyTextEdits(
           editor.document,
           insertDocumentHeader(editor.document)
         )
     ),
-
-    vscode.workspace.onWillSaveTextDocument((event) =>
+    vscode.workspace.onWillSaveTextDocument(event =>
       event.waitUntil(
         Promise.resolve(
           updateDocumentHeader(event.document)

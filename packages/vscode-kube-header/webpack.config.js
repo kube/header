@@ -18,23 +18,25 @@ const PROJECT_ROOT = __dirname
 module.exports = {
   target: 'node',
   devtool: 'source-map',
-  entry: {
-    cli: join(PROJECT_ROOT, 'src/cli'),
-    lib: join(PROJECT_ROOT, 'src/lib'),
-  },
+  entry: join(PROJECT_ROOT, 'src/extension'),
   resolve: {
     extensions: ['.ts', '.js'],
+  },
+  externals: {
+    vscode: 'commonjs vscode',
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
         loaders: ['ts-loader'],
+        exclude: /node_modules/,
       },
     ],
   },
   output: {
     path: join(PROJECT_ROOT, 'dist'),
+    filename: 'extension.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '../[resource-path]',
   },
