@@ -104,7 +104,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.node-version }}-dist
-          path: packages/**/dist
+          path: packages/*/dist
 
   #
   # Publish on NPM
