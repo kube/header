@@ -11,5 +11,5 @@ webpack.config.js
 yarn.lock
 /dist/cli
 /dist/data
-/dist/lib
+/dist/lib/
 *.map
