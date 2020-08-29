@@ -22,7 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -55,7 +55,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [12.x]
         package: [kube-header]
 
     steps:
@@ -83,7 +83,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
