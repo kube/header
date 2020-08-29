@@ -206,4 +206,4 @@ jobs:
         env:
           VSCODE_AUTH_TOKEN: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
         working-directory: packages/${{ matrix.package }}
-        run: npx vsce publish -p $VSCODE_AUTH_TOKEN
+        run: npx vsce publish --yarn -p $VSCODE_AUTH_TOKEN
