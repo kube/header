@@ -189,5 +189,19 @@ jobs:
         run: echo "##[set-output name=value;]$(npx vsce show --json kube.${{ matrix.package }} | jq -r .versions[0].version)"
 
       - name: Version update detected
-        if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
         run: 'echo "Version update found: Current: ${{ steps.marketplace-version.outputs.value }}. New: ${{ steps.branch-version.outputs.value }}"'
+
+      - name: Load dist
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ matrix.node-version }}-dist
+          path: packages/
+
+      - name: Publish package to VSCode Marketplace
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+        env:
+          VSCODE_AUTH_TOKEN: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        working-directory: packages/${{ matrix.package }}
+        run: npx vsce publish -p $VSCODE_AUTH_TOKEN
