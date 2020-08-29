@@ -1,7 +1,6 @@
 {
   "name": "header",
   "private": true,
-  "version": "1.2.12",
   "workspaces": [
     "packages/*"
   ],
