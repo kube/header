@@ -2,7 +2,7 @@
   "name": "vscode-kube-header",
   "displayName": "kube Header",
   "description": "kube Header for VSCode",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "publisher": "kube",
   "license": "MIT",
   "icon": "kube.png",
