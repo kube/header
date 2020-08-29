@@ -8,7 +8,7 @@
      ## ## ## :##
       ## ## ##*/
 
-import { LANGUAGE_HEADER, SupportedLanguage } from '../data'
+import { LANGUAGE_HEADER, SupportedLanguage } from './data'
 import { extractShebang } from './shebang'
 
 export type { SupportedLanguage }

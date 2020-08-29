@@ -8,7 +8,7 @@
      ## ## ## :##
       ## ## ##*/
 
-import { paddedText } from '../lib/utils'
+import { paddedText } from '../utils'
 
 export const HEADER = {
   hash: paddedText`
@@ -88,5 +88,5 @@ export const HEADER = {
     |      %% %% %%."
     |
     |
-`
+`,
 }

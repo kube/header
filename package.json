@@ -6,8 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run dev --parallel --stream",
-    "build": "lerna run build"
+    "test": "lerna run test --parallel --stream --",
+    "dev": "lerna run dev --parallel --stream -- --watch",
+    "build": "lerna run build --",
+    "clean": "lerna run clean"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
