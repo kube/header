@@ -9,18 +9,20 @@
       ## ## ##*/
 
 const { join } = require('path')
+const DefinitionBundlePlugin = require('dts-bundle-webpack')
 
 const PROJECT_ROOT = __dirname
+const SOURCES_ROOT = join(PROJECT_ROOT, 'src')
+const BUILD_FOLDER = join(PROJECT_ROOT, 'dist')
 
 /**
  * e@type {import('webpack').Configuration}
  */
 module.exports = {
   target: 'node',
-  devtool: 'source-map',
   entry: {
-    cli: join(PROJECT_ROOT, 'src/cli'),
-    lib: join(PROJECT_ROOT, 'src/lib'),
+    cli: join(SOURCES_ROOT, 'cli'),
+    lib: join(SOURCES_ROOT, 'lib'),
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -34,8 +36,16 @@ module.exports = {
     ],
   },
   output: {
-    path: join(PROJECT_ROOT, 'dist'),
+    path: BUILD_FOLDER,
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '../[resource-path]',
   },
+  plugins: [
+    new DefinitionBundlePlugin({
+      name: 'kube-header',
+      removeSource: true,
+      main: join(BUILD_FOLDER, 'lib/index.d.ts'),
+      out: join(BUILD_FOLDER, 'lib.d.ts'),
+    }),
+  ],
 }

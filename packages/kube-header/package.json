@@ -1,22 +1,24 @@
 {
   "name": "kube-header",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "bin": {
     "header": "dist/cli.js"
   },
   "main": "dist/lib.js",
-  "types": "dist/lib/index.d.ts",
+  "types": "dist/lib.d.ts",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "dev": "webpack --mode development",
+    "dev": "webpack --mode development --devtool source-map",
     "build": "webpack --mode production",
-    "prepublishOnly": "sh scripts/shebang.sh"
+    "prepublishOnly": "sh scripts/shebang.sh",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "@types/webpack": "^4.41.21",
     "commander": "^6.1.0",
+    "dts-bundle-webpack": "^1.0.2",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
     "ts-loader": "^8.0.3",

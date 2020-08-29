@@ -2,7 +2,7 @@
   "name": "vscode-kube-header",
   "displayName": "kube Header",
   "description": "kube Header for VSCode",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "publisher": "kube",
   "license": "MIT",
   "icon": "kube.png",
@@ -13,16 +13,32 @@
   "bugs": {
     "url": "https://github.com/kube/header/issues"
   },
+  "main": "./dist/extension",
   "engines": {
     "vscode": "^1.48.0"
   },
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [
     "*"
   ],
-  "main": "./dist/extension",
+  "scripts": {
+    "vscode:prepublish": "yarn build",
+    "dev": "webpack --mode development --devtool source-map",
+    "build": "webpack --mode production",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "kube-header": "^1.2.13"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.48.0",
+    "@types/webpack": "^4.41.21",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
   "contributes": {
     "commands": [
       {
@@ -39,20 +55,5 @@
         "when": "editorTextFocus"
       }
     ]
-  },
-  "scripts": {
-    "vscode:prepublish": "yarn build",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
-  },
-  "dependencies": {
-    "kube-header": "^1.2.11"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.48.0",
-    "@types/webpack": "^4.41.21",
-    "typescript": "^4.0.2",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
   }
 }
