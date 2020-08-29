@@ -130,7 +130,7 @@ jobs:
 
       - name: Get version in current branch
         id: branch-version
-        run: echo "##[set-output name=value;]$(jq -r .version package.json)"
+        run: echo "##[set-output name=value;]$(jq -r .version packages/${{ matrix.package }}/package.json)"
 
       - name: Check if version exists on NPM
         id: npm-version
