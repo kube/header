@@ -2,7 +2,7 @@
   "name": "vscode-kube-header",
   "displayName": "kube Header",
   "description": "kube Header for VSCode",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "publisher": "kube",
   "license": "MIT",
   "icon": "kube.png",
@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "kube-header": "^1.2.11"
+    "kube-header": "^1.2.13"
   },
   "devDependencies": {
     "@types/vscode": "^1.48.0",
