@@ -42,9 +42,8 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
-      - run: |
-          | yarn install
-          | yarn lerna bootstrap
+      - run: yarn install
+      - run: yarn lerna bootstrap
 
   #
   # Test
