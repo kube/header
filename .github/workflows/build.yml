@@ -151,6 +151,7 @@ jobs:
         if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        working-directory: packages/${{ matrix.package }}
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "<@OWNER>"
