@@ -1,6 +1,6 @@
 {
   "name": "kube-header",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "bin": {
     "header": "dist/cli.js"
   },
