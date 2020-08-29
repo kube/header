@@ -6,3 +6,4 @@ tsconfig.json
 yarn.lock
 package-lock.json
 install.sh
+node_modules
