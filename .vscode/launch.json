@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch VS Code KUBE HEADER Extension",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/vscode-kube-header/"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/packages/vscode-kube-header/dist/**/*.js"
+      ],
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "type": "pwa-extensionHost"
+    }
+  ]
+}

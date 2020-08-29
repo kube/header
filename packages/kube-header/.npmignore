@@ -9,6 +9,7 @@ tsconfig.json
 jest.config.js
 webpack.config.js
 yarn.lock
-/dist/src/cli
-/dist/src/data
-/dist/src/lib/tests
+/dist/cli
+/dist/data
+/dist/lib/tests
+*.map

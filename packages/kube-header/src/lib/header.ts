@@ -11,6 +11,8 @@
 import { LANGUAGE_HEADER, SupportedLanguage } from '../data'
 import { extractShebang } from './shebang'
 
+export type { SupportedLanguage }
+
 /**
  * Regex to verify that current text begins by a header.
  * Matches all kinds of header even if broken by code-formatter
