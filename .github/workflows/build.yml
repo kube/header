@@ -120,7 +120,7 @@ jobs:
         node-version: [12.x]
         package: [kube-header]
 
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout repository
@@ -146,12 +146,12 @@ jobs:
           name: ${{ matrix.node-version }}-dist
           path: packages/${{ matrix.package }}/dist
 
-      - name: Publish package to NPM
-        if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm config set scope "<@OWNER>"
-          npm config list
-          npm publish --access public
+      # - name: Publish package to NPM
+      #   if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: |
+      #     npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+      #     npm config set scope "<@OWNER>"
+      #     npm config list
+      #     npm publish --access public
