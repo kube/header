@@ -192,7 +192,7 @@ jobs:
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
         run: |
           jq "del(.dependencies) | del(.devDependencies) | del(.scripts)" package.json > package.clean.json
-          mv package.clean.json > package.json
+          mv package.clean.json package.json
 
       - name: Load dist
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
