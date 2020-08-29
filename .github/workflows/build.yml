@@ -84,7 +84,6 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x]
-        package: [kube-header, vscode-kube-header]
 
     steps:
       - uses: actions/checkout@v2
@@ -104,8 +103,8 @@ jobs:
       - name: Persist dist
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ matrix.package }}-${{ matrix.node-version }}-dist
-          path: packages/${{ matrix.package }}/dist
+          name: ${{ matrix.node-version }}-dist
+          path: packages/**/dist
 
   #
   # Publish on NPM
@@ -144,7 +143,7 @@ jobs:
       - name: Load dist
         uses: actions/download-artifact@v1
         with:
-          name: ${{ matrix.package }}-${{ matrix.node-version }}-dist
+          name: ${{ matrix.node-version }}-dist
           path: packages/${{ matrix.package }}/dist
 
       - name: Publish package to NPM
