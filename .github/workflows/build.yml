@@ -100,7 +100,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn workspace ${{ matrix.package }} build
+      - run: yarn lerna run build
 
       - name: Persist dist
         uses: actions/upload-artifact@v1
