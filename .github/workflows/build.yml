@@ -188,11 +188,12 @@ jobs:
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
         run: 'echo "Version update found: Current: ${{ steps.marketplace-version.outputs.value }}. New: ${{ steps.branch-version.outputs.value }}"'
 
-      - name: Clean package.json
+      - name: Load node_modules
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
-        run: |
-          jq "del(.dependencies) | del(.devDependencies) | del(.scripts)" package.json > package.clean.json
-          mv package.clean.json package.json
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Load dist
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
