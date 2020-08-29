@@ -24,7 +24,6 @@
     "*"
   ],
   "scripts": {
-    "vscode:prepublish": "yarn build",
     "dev": "webpack --mode development --devtool source-map",
     "build": "webpack --mode production",
     "clean": "rm -rf dist"
