@@ -101,7 +101,7 @@ jobs:
       - run: yarn lerna run build
 
       - name: Persist dist
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.node-version }}-dist
           path: packages/**/dist
@@ -141,7 +141,7 @@ jobs:
         run: 'echo "Version update found: New version: ${{ steps.branch-version.outputs.value }}"'
 
       - name: Load dist
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: ${{ matrix.node-version }}-dist
           path: packages/${{ matrix.package }}/dist
