@@ -141,7 +141,7 @@ jobs:
         run: 'echo "Version update found: New version: ${{ steps.branch-version.outputs.value }}"'
 
       - name: Load dist
-        if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
+        # if: steps.npm-version.outputs.value != steps.branch-version.outputs.value
         uses: actions/download-artifact@v2
         with:
           name: ${{ matrix.node-version }}-dist
