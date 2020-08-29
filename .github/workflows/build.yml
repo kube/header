@@ -125,8 +125,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: master
 
       - name: Get version in current branch
         id: branch-version
@@ -177,8 +175,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: master
 
       - name: Get version in current branch
         id: branch-version
